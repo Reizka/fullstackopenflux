@@ -9,9 +9,9 @@ import {initializeAnecdotes} from "./reducers/anecdoteRedux"
 const App = (props) => {
   //const store = props.store;
   useEffect(()=>{
-    anecdoteService
-    .getAll().then(anecdotes => props.initializeAnecdotes(anecdotes))
-  },[props])
+     props.initializeAnecdotes();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
   
   return(
     <div>

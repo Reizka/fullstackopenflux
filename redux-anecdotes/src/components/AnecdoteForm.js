@@ -2,7 +2,6 @@ import React from 'react';
 import{createAnectdote} from '../reducers/anecdoteRedux'
 import {customMessage,clearMessage} from "../reducers/notificationRedux"
 import { connect } from 'react-redux'
-import anecdoteService from "../services/anecdoteService"
 const AnectdoteForm = (props)=>{
     
       const addAnectdote = async (event) =>{
@@ -10,10 +9,8 @@ const AnectdoteForm = (props)=>{
 
         const content = event.target.anecdote.value;
         event.target.anecdote.value="";
-        
-        const newAnecdote = await anecdoteService.createNew(content)
-        
-        props.createAnectdote(newAnecdote);
+                
+        props.createAnectdote(content);
         props.customMessage(`${content} added`);
         setTimeout(()=>
         { 
