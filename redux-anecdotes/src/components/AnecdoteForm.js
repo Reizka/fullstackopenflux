@@ -1,6 +1,6 @@
 import React from 'react';
 import{createAnectdote} from '../reducers/anecdoteRedux'
-import {customMessage,clearMessage} from "../reducers/notificationRedux"
+import {message,clearMessage} from "../reducers/notificationRedux"
 import { connect } from 'react-redux'
 const AnectdoteForm = (props)=>{
     
@@ -11,11 +11,12 @@ const AnectdoteForm = (props)=>{
         event.target.anecdote.value="";
                 
         props.createAnectdote(content);
-        props.customMessage(`${content} added`);
-        setTimeout(()=>
-        { 
-            props.clearMessage() 
-        }, 3000);
+        props.message(`${content} added`);
+        setTimeout(()=>{
+          props.clearMessage();
+        },1000)
+        
+       
         
       }
 
@@ -43,7 +44,7 @@ export default connect(
       mapStateToProps,
       {//MapStateToDispatch Wrap  
         createAnectdote,
-        customMessage,
+        message,
         clearMessage
       }
       )(AnectdoteForm)

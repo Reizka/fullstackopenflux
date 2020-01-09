@@ -1,3 +1,4 @@
+
 const initialState ={
     content:"place holder"
 }
@@ -20,39 +21,18 @@ const reducer = (state = initialState, action) => {
     }
   }
 
-  export const customMessage = (content) => {
-    return {
-      type: 'NOTIFICATION',
-      data:{
-        text:content
-      }
+  export const message = (message,waitForSec) => {
+    return async dispatch => {
+     
+      dispatch({
+        type: 'NOTIFICATION',
+        data:{
+            text:message
+        }
+      })
     }
+  
   }
 
-  export const welcomeMessage = () => {
-    return {
-      type: 'NOTIFICATION',
-      data:{
-        text:"Welcome to redux app!"
-      }
-    }
-  }
-  
-  export const votedMessage = (votedFor) =>{
-    return{
-      type: 'NOTIFICATION',
-      data:{
-          text:"You voted for: "+votedFor
-      }
-    }
-  }
- 
-  export const errorMessage = (error) =>{
-    return{
-      type: 'NOTIFICATION',
-      data:{
-          text: "Uh oh,  Something went wrong! "
-      }
-    }
-  }
+
   export default reducer

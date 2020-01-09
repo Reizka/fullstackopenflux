@@ -1,17 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import{voteAnectdote} from '../reducers/anecdoteRedux'
-import {votedMessage,clearMessage} from "../reducers/notificationRedux"
+import {message,clearMessage} from "../reducers/notificationRedux"
 const AnecdoteList = (props)  =>{
     const anecdotes = props.anecdotes;
     const vote = (id,content) => {
         console.log('vote', id)
         props.voteAnectdote(id)
-        props.votedMessage(content)
-        setTimeout(()=>
-        { 
-            props.clearMessage() 
-        }, 3000);
+        props.message(content)
+        setTimeout(()=>{
+          props.clearMessage();
+        },1000)
+        
+        
       }
     
       return (
@@ -40,8 +41,8 @@ const mapStateToProps = (state) => {
   export default connect(
     mapStateToProps,
     { //MapStateToDispatch Wrap  
-      votedMessage,    
-      clearMessage,
+      message,
+      clearMessage,    
       voteAnectdote
     }
     )(AnecdoteList)
