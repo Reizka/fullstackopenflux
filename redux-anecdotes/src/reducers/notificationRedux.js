@@ -1,13 +1,11 @@
 const initialState ={
-    notification:"place holder"
+    content:"place holder"
 }
 
 const reducer = (state = initialState, action) => {
-    console.log("MESSAGE",action);
     switch(action.type){
       case "NOTIFICATION":
-        console.log(action.data.text);
-        return {...action,notification:action.data.text}
+        return {...action,content:action.data.text}
       case "CLEAR":
         return{...action,notification:""} 
       default:
@@ -23,7 +21,6 @@ const reducer = (state = initialState, action) => {
   }
 
   export const customMessage = (content) => {
-      console.log("content sent",content);
     return {
       type: 'NOTIFICATION',
       data:{
@@ -42,7 +39,6 @@ const reducer = (state = initialState, action) => {
   }
   
   export const votedMessage = (votedFor) =>{
-      console.log("VOTE MESSAGE",votedFor);
     return{
       type: 'NOTIFICATION',
       data:{
@@ -52,7 +48,6 @@ const reducer = (state = initialState, action) => {
   }
  
   export const errorMessage = (error) =>{
-      console.log(error);
     return{
       type: 'NOTIFICATION',
       data:{
